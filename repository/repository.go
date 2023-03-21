@@ -83,9 +83,7 @@ func (c Repository) AddBook(ctx context.Context, req *pb.Book) (*pb.Book, error)
 	if err != nil {
 		panic(err)
 	}
-	Books, err := models.Books().AllG(ctx)
-	Book := Books[len(Books)-1]
-	fmt.Println("Book:", Book)
+	Book, err := models.FindBookG(ctx, req.ID)
 	var PbBook = &pb.Book{
 		ID:    Book.ID,
 		Title: Book.Title.String,
