@@ -1,0 +1,28 @@
+syntax="proto3";
+
+package proto;
+
+option go_package="./pb";
+
+message Book{
+    string ID =1;
+    string Title =2;
+    Author Author=3; 
+}
+
+message Books{
+    repeated Book BookList=6;
+}
+
+message Author{
+    string FirstName=4;
+    string LastName=5;
+}
+
+service BookService{
+    rpc getBooks(Book) returns (Books);
+    rpc getBook(Book) returns (Book);
+    rpc createBook(Book) returns (Book);
+    rpc updateBook(Book) returns (Book);
+    rpc deleteBook(Book) returns (Books);
+}
