@@ -94,6 +94,7 @@ func (c Repository) AddBook(ctx context.Context, req *pb.Book) (*pb.Book, error)
 func (c Repository) EditBook(ctx context.Context, req *pb.Book) (*pb.Book, error) {
 	Book, err := models.FindBookG(ctx, req.ID)
 	if err != nil {
+		//hoge
 		panic(err)
 	}
 
